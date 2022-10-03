@@ -1,5 +1,10 @@
+import { BrowserRouter } from 'react-router-dom'
+import { AppRouter } from './router/AppRouter'
+
 export const TodoApp = () => {
   return (
-      <div className='text-blue-500'>TodoApp</div>
+      <BrowserRouter>
+        <AppRouter />
+      </BrowserRouter>
   )
 }
