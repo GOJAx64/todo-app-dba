@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { LoginPage, RegisterPage } from '../auth';
-import { ProfilePage } from '../todo-app';
+import { TodoApp } from '../todo-app';
 
 export const AppRouter = () => {
     const authStatus = 'not-authenticated';
@@ -10,7 +10,7 @@ export const AppRouter = () => {
                 {
                     (authStatus === 'not-authenticated')  
                         ? <Route path="/auth/*" element={ <LoginPage  /> } />
-                        : <Route path="/*"      element={ <ProfilePage/> } />
+                        : <Route path="/*"      element={ <TodoApp/> } />
                 }
                 <Route path="/*"        element={ <Navigate to="/auth/login"/> } />
                 <Route path="/register" element={ <RegisterPage /> } />

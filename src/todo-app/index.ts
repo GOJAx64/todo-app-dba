@@ -1,1 +1,1 @@
-export * from './ProfilePage';
+export * from './TodoApp';
