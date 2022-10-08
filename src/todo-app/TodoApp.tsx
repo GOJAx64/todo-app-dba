@@ -1,14 +1,20 @@
-import React from 'react'
-import { Navbar, SideBar } from '../ui'
+import { Route, Routes } from 'react-router-dom'
+
+import { Navbar, SideBar } from './layout'
+import { CalendarPage, HomeworksPage, NotesPage } from '../todo-app/pages';
 
 export const TodoApp = () => {
   return (
-    <>
+    <div>
       <Navbar/>
-      <div className='grid grid-cols-2 gap-11'>
+      <div className='flex'>
         <SideBar/>
-        <div className='mt-20 pl-48'>TodoApp</div>
+        <Routes>
+          <Route path="/homeworks" element={ <HomeworksPage/> } />
+          <Route path="/notes"     element={ <NotesPage/> } />
+          <Route path="/calendar"  element={ <CalendarPage/> } />
+        </Routes>
       </div>
-    </>
+    </div>
   )
 }

@@ -1,5 +1,5 @@
 // import waves from '../../assets/image.jpg';
-import google from '../assets/google.png';
+import google from '../../assets/google.png';
 import { NavLink } from 'react-router-dom';
 
 export const LoginPage = () => {
@@ -37,7 +37,7 @@ export const LoginPage = () => {
                 </p>
                 {/* Bottom Buttons Container */}
                 <div className="flex flex-col space-x-0 space-y-6 md:flex-row md:space-x-4 md:space-y-0" >
-                    <NavLink to='/register' className="flex items-center justify-center py-2 space-x-3 border border-orange-400 bg-orange-500 rounded shadow-sm hover:bg-opacity-100 hover:shadow-lg hover:-translate-y-0.5 transition duration-150 md:w-1/2">
+                    <NavLink to='/auth/register' className="flex items-center justify-center py-2 space-x-3 border border-orange-400 bg-orange-500 rounded shadow-sm hover:bg-opacity-100 hover:shadow-lg hover:-translate-y-0.5 transition duration-150 md:w-1/2">
                         <span className="font-medium text-white">Registrarme</span>
                     </NavLink>
                     <button className="flex items-center justify-center py-2 space-x-3 border border-gray-300 rounded shadow-sm hover:bg-opacity-30 hover:shadow-lg hover:-translate-y-0.5 transition duration-150 md:w-1/2">

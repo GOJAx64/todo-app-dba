@@ -1,2 +1,2 @@
-export * from './LoginPage';
-export * from './RegisterPage';
+export * from './pages';
+export * from './AuthApp';
