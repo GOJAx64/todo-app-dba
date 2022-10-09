@@ -4,12 +4,12 @@ import { AuthApp } from '../auth';
 import { TodoApp } from '../todo-app';
 
 export const AppRouter = () => {
-    const authStatus = 'authenticated';
+    const authStatus = 'not-authenticated';
 
     return (
         <Routes>
             {
-                (authStatus === 'not-authenticated')  
+                (authStatus === 'authenticated')  
                     ? <Route path="/auth/*" element={ <AuthApp/> } />
                     : <Route path="/*"      element={ <TodoApp/> } />
             }        

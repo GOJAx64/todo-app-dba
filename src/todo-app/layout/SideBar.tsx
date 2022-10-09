@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom'
 
 export const SideBar = () => {
   return (
-    <aside className="w-64 h-full flex-none  lg:visible" aria-label="Sidebar">
+    <aside className="w-64  flex-none h-[89.8vh] bg-slate-200 lg:visible" aria-label="Sidebar">
       <div className="overflow-y-auto py-4 px-3 ">
         <ul className="space-y-2">
             <li>
@@ -32,7 +32,7 @@ export const SideBar = () => {
               </NavLink>
             </li>
         </ul>
-        <ul className="pt-4 mt-4 space-y-2 border-t border-gray-200">
+        <ul className="pt-4 mt-4 space-y-2 border-t border-slate-300">
             <li>
               <a href="#" className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100">
                   <svg aria-hidden="true" className="flex-shrink-0 w-6 h-6 text-red-500 transition duration-75 group-hover:text-gray-900" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clipRule="evenodd"></path></svg>
