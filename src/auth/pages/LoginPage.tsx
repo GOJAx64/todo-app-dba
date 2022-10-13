@@ -1,12 +1,12 @@
-// import waves from '../../assets/image.jpg';
 import google from '../../assets/google.png';
+import logo from '../../assets/ruinas.jpg';
 import { NavLink } from 'react-router-dom';
 
 export const LoginPage = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-slate-300">
         {/* Card Container */}
-        <div className=" flex flex-col m-6 space-y-10 bg-slate-100 shadow-2xl rounded-2xl md:flex-row md:space-y-0 md:m-0">
+        <div className=" flex flex-col m-6 space-y-10 bg-slate-200 shadow-2xl rounded-2xl md:flex-row md:space-y-0 md:m-0">
             {/* Left Side  */}
             <div className="p-6 md:px-8 md:py-8">
                 {/*  Top Content  */}
@@ -17,7 +17,7 @@ export const LoginPage = () => {
                 <input type="text" className="block w-full p-6 border border-gray-300 rounded-md placeholder:font-sans placeholder:font-light" placeholder="Ingresa tu correo eléctronico"/>
                 <input type="password" className="block w-full mt-2 p-6 border border-gray-300 rounded-md placeholder:font-sans placeholder:font-light" placeholder="Ingresa tu contraseña"/>
                 {/* Middle Content */}
-                <div className="flex flex-col items-center justify-between mt-6 space-y-6 md:flex-row md:space-y-0">
+                <div className="flex flex-col items-center justify-center mt-6 space-y-6 md:flex-row md:space-y-0">
                     <button className="w-full md:w-auto flex justify-center items-center px-8 py-3 space-x-0 font-sans font-bold text-white rounded-md bg-blue-700 shadow-blue-100 hover:bg-opacity-90 shadow-sm hover:shadow-lg border transition hover:-translate-y-0.5 duration-150">
                         <span>Iniciar Sesión</span>
                         <svg xmlns="http://www.w3.org/2000/svg" className="w-7" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
@@ -33,22 +33,18 @@ export const LoginPage = () => {
                 <div className="mt-5 border-b border-b-gray-300"></div>
                 {/* Bottom Content */}
                 <p className="py-6 text-sm font-thin text-center text-gray-600">
-                    si no estás registrado, crea una cuenta o inicia sesión con google
+                    si no estás registrado, crea una cuenta
                 </p>
                 {/* Bottom Buttons Container */}
-                <div className="flex flex-col space-x-0 space-y-6 md:flex-row md:space-x-4 md:space-y-0" >
+                <div className="flex flex-col space-x-0 justify-center space-y-6 md:flex-row md:space-x-4 md:space-y-0" >
                     <NavLink to='/auth/register' className="flex items-center justify-center py-2 space-x-3 border border-orange-400 bg-orange-500 rounded shadow-sm hover:bg-opacity-100 hover:shadow-lg hover:-translate-y-0.5 transition duration-150 md:w-1/2">
                         <span className="font-medium text-white">Registrarme</span>
                     </NavLink>
-                    <button className="flex items-center justify-center py-2 space-x-3 border border-gray-300 rounded shadow-sm hover:bg-opacity-30 hover:shadow-lg hover:-translate-y-0.5 transition duration-150 md:w-1/2">
-                        <img src={ google } alt="google" className="w-8 h-8" />
-                        <span className="font-normal">Google</span>
-                    </button>
                 </div>
             </div>
             {/* Right Side */}
             {/* <div>
-                <img src='' alt="waves" className="w-[430px] rounded-r-2xl md:block" />  
+                <img src={ logo } alt="waves" className="w-[40vw] rotate-90 rounded-r-2xl md:block my-28"/>  
             </div> */}
         </div>
     </div>
