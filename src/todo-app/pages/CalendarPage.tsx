@@ -1,20 +1,8 @@
-import { Calendar, dateFnsLocalizer  } from 'react-big-calendar';
+import { Calendar } from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { localizer, getMessagesES } from '../../helpers';
 
-import { addHours, parse, startOfWeek, format, getDay } from 'date-fns';
-import enUS from 'date-fns/locale/en-US'
-
-const locales = {
-  'en-US': enUS,
-}
-
-const localizer = dateFnsLocalizer({
-  format,
-  parse,
-  startOfWeek,
-  getDay,
-  locales,
-});
+import { addHours } from 'date-fns';
 
 const myEventsList = [
   {
@@ -48,6 +36,8 @@ export const CalendarPage = () => {
       events={ myEventsList }
       startAccessor="due"
       endAccessor="due"
+      culture='es'
+      messages={ getMessagesES() }
       style={{ 
         height: '100vh',  
         width: '100vw', 
