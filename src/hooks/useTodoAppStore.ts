@@ -1,18 +1,18 @@
 import { useDispatch } from 'react-redux';
-import { onSetActiveEvent } from '../store';
+import { addNewEmptyHomework } from '../store';
 
  export const useTodoAppStore = () => {
     const dispatch = useDispatch();
     
-    const createNewForm = () => {
-        dispatch( onSetActiveEvent( event ) )
+    const createNewHomework = () => {
+        dispatch( addNewEmptyHomework( event ) )
     }
 
     return {
         //* Propiedades
-
+        
         //* Métodos
-        createNewForm,
+        createNewHomework,
     }
  }
  

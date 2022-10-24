@@ -6,11 +6,11 @@ interface TitleHeaderProps{
 
 export const TitleHeader = ({ title }:TitleHeaderProps) => {
     
-    const { createNewForm } = useTodoAppStore();
+    const { createNewHomework } = useTodoAppStore();
 
     const handleNewEvent = () => {
         console.log('aqui si entra')
-        createNewForm();
+        createNewHomework();
     }
 
     return (

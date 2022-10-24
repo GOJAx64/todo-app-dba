@@ -1,3 +1,3 @@
-export * from './todoAppSlice';
+export * from './homeworkSlice';
 
 export * from './store';

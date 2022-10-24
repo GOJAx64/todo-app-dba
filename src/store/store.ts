@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { todoAppSlice } from './';
+import { homeworkSlice } from './';
 
 export const store = configureStore({
     reducer: {
-        calendar: todoAppSlice.reducer,
+        homework: homeworkSlice.reducer,
     },
     // middleware: (getDefaultMiddleware) => getDefaultMiddleware({
     //     serializableCheck: false
