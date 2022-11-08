@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const useForm = ( initialForm = {} ) => {
+export const useForm = ( initialForm = {}, setHomeworks:any, homeworks:any ) => {
     const [formValues, setFormValues] = useState( initialForm );
     const [formSubmitted, setFormSubmitted] = useState(false);
 
@@ -14,8 +14,7 @@ export const useForm = ( initialForm = {} ) => {
     const onSubmit = ( event:React.FormEvent<HTMLFormElement> ) => {
         event.preventDefault();
         setFormSubmitted(true);
-        console.log({formValues});
-        //TODO: proceso de registro de form
+        setHomeworks([...homeworks, formValues])
         onResetForm();
     }
 
@@ -39,6 +38,7 @@ export const useForm = ( initialForm = {} ) => {
         onSubmit,
         onResetForm,
         onDateChange,
+        setFormValues,
     }
 }
 

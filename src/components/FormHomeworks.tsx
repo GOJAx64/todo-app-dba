@@ -7,15 +7,28 @@ import { useForm } from '../hooks';
 import fav  from '../assets/fav.svg';
 import edit  from '../assets/edit-1.svg';
 import del from '../assets/delete-1.svg';
+import { useEffect } from "react";
 
 registerLocale('es', es)
 
-export const FormHomeworks = () => {
-    const {formSubmitted, formValues, onSubmit, onInputChange, onDateChange }:any = useForm({
-        due: new Date(),
-        title: 'Nueva',
-        description: 'Nueva',
-    });
+export const FormHomeworks = ({ homeworks, setHomeworks, homework, setHomework }:any ) => {
+    
+    const {setFormValues, formValues, onSubmit, onInputChange, onDateChange }:any = useForm({
+        due: undefined,
+        title: '',
+        description: '',   
+    }, setHomeworks, homeworks);
+
+    useEffect(() => {
+      if( Object.keys(homework).length > 0 ) {
+        setFormValues({
+            due: homework.due,
+            title: homework.title,
+            description: homework.description, 
+        })
+      }
+    }, [homework])
+    
 
     return (
         <div className='w-1/2 h-screen bg-slate-200'>
