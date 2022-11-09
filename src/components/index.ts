@@ -1,4 +1,4 @@
-export * from './Card';
-export * from './TitleHeader';
+export * from './HomeworkCard';
+export * from './HeaderHomework';
 export * from './FormHomeworks';
 export * from './FormNotes';

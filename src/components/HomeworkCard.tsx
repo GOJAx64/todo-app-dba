@@ -1,6 +1,5 @@
 
-export const Card = ({ homework, setHomework}:any ) => {
-  console.log(homework);
+export const HomeworkCard = ({ homework, setHomework}:any ) => {
   return (
       <button onClick={ () => setHomework(homework) } className="flex items-center my-2 bg-slate-100 rounded-lg border border-slate-300 shadow-md md:mx-0 md:flex-row md:w-full hover:bg-slate-200 hover:border-slate-400">
           <div className="flex flex-col justify-between py-2 px-3 leading-normal">
