@@ -4,7 +4,7 @@ import { AuthApp } from '../auth';
 import { TodoApp } from '../todo-app';
 
 export const AppRouter = () => {
-    const authStatus = 'not-authenticated';
+    const authStatus = 'authenticated';
 
     return (
         <Routes>

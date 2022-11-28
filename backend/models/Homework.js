@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const noteSchema = mongoose.Schema({
+const homeworkSchema = mongoose.Schema({
     title: {
         type: String,
         required: true,
@@ -10,6 +10,15 @@ const noteSchema = mongoose.Schema({
         type: String,
         required: true,
         trim: true,
+    },
+    dueDate: {
+        type: Date,
+        required: true,
+        default: Date.now(),
+    },
+    state: {
+        type: Boolean,
+        default: false,
     },
     favorite: {
         type: Boolean,
@@ -23,5 +32,5 @@ const noteSchema = mongoose.Schema({
     timestamps: true,
 });
 
-const Note = mongoose.model('Note', noteSchema );
-export default Note;
+const Homework = mongoose.model('Homework', homeworkSchema );
+export default Homework;
