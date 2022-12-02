@@ -23,7 +23,7 @@ export const register = async (req, res) => {
             token: user.token,
         })
 
-        res.json({ msg: 'Usuario creado correctamente, Revisa tu correo para confirmar tu cuenta'});
+        res.json({ msg: 'Enviamos un correo para confirmar tu cuenta'});
     } catch (error) {
         return res.status(500).json({ msg: error.message + " - Contacte al administrador" });
     }
