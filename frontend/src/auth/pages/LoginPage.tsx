@@ -1,13 +1,15 @@
 import { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Alert } from '../../components';
 import axiosClient from '../../config/axiosClient';
+import useAuth from '../../hooks/useAuth';
 
 export const LoginPage = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('');
     const [alert, setAlert] = useState({});
-
+    const { setAuth }:any = useAuth();
+    
     const handleSubmit = async(e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
@@ -23,6 +25,7 @@ export const LoginPage = () => {
             const { data } = await axiosClient.post('/auth/login', { email, password });
             setAlert({});
             localStorage.setItem('token', data.token);
+            setAuth(data);
         } catch (error:any) {
             setAlert({
                 msg: error.response.data.msg,

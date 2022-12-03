@@ -1,19 +1,20 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
+import useAuth from '../hooks/useAuth';
 import { AuthApp } from '../auth';
 import { TodoApp } from '../todo-app';
 
 export const AppRouter = () => {
-    const authStatus = 'authenticated';
+    
+    const { auth, loading }:any = useAuth();
 
     return (
         <Routes>
             {
-                (authStatus === 'authenticated')  
-                    ? <Route path="/auth/*" element={ <AuthApp/> } />
-                    : <Route path="/*"      element={ <TodoApp/> } />
+                auth._id  
+                    ? <Route path="/*"      element={ <TodoApp/> } />
+                    : <Route path="/auth/*" element={ <AuthApp/> } />
             }        
-            <Route path="/*"        element={ <Navigate to="/auth/login"/> } />
         </Routes>
     )
 }
