@@ -36,7 +36,7 @@ export const authenticate = async(req, res) => {
     //User exists
     const user = await User.findOne({email});
     if(!user) {
-        const error = new Error('No existe el usuario');
+        const error = new Error('El usuario no existe');
         return res.status(404).json({ msg: error.message });
     }
 
@@ -55,7 +55,7 @@ export const authenticate = async(req, res) => {
             token: generateJWT(user._id),
         })
     } else {
-        const error = new Error('Incorrect Password');
+        const error = new Error('Contraseña Incorrecta');
         return res.status(403).json({ msg: error.message });
     }
 };
