@@ -1,7 +1,7 @@
 import User from '../models/User.js';
 import generateId from '../helpers/generateId.js';
 import generateJWT from '../helpers/generateJWT.js';
-import { emailRegistration } from '../helpers/emails.js';
+import { emailRegistration, emailForgotPassword } from '../helpers/emails.js';
 
 export const register = async (req, res) => {
     const { email } = req.body;
@@ -91,6 +91,13 @@ export const forgotPassword = async(req, res) => {
     try {
         user.token = generateId();
         await user.save();
+        
+        emailForgotPassword({
+            email: user.email,
+            name: user.name,
+            token: user.token, 
+        });
+
         res.json( {msg: "Enviamos un correo con instrucciones"} );
     } catch (error) {
         return res.status(500).json({ msg: error.message + " Contacte al administrador" });
@@ -99,7 +106,7 @@ export const forgotPassword = async(req, res) => {
 
 export const checkToken = async(req, res) => {
     const { token } = req.params;
-
+    
     const validToken = await User.findOne({ token });
     if(validToken) {
         res.json({ msg: 'El usuario existe y el token es válido' });
