@@ -1,7 +1,7 @@
-import axios from 'axios';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Alert } from '../../components';
+import axiosClient from '../../config/axiosClient';
 
 export const ForgotMyPassword = () => {
     
@@ -20,9 +20,8 @@ export const ForgotMyPassword = () => {
         }
 
         try {
-            //TODO: move to an Axios Client
-            const url = `${import.meta.env.VITE_BACKEND_URL}/api/auth/forgot_password`;
-            const { data } = await axios.post(url, { email });
+            const url = '/auth/forgot_password';
+            const { data } = await axiosClient.post(url, { email });
             setAlert({
                 msg: data.msg,
                 error: false,

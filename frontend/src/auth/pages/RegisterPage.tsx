@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Alert } from '../../components';
-import axios from 'axios';
+import axiosClient from '../../config/axiosClient';
 
 export const RegisterPage = () => {
     const [name, setName] = useState('');
@@ -31,8 +31,7 @@ export const RegisterPage = () => {
         
         setAlert({});
         try {
-            const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/`,
-                                                { name, username, email, password });
+            const { data } = await axiosClient.post(`/auth/`, { name, username, email, password });
             setAlert({
                 msg: data.msg,
                 error: false           
