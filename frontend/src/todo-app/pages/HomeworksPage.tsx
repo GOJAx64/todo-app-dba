@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { FormHomeworks, HomeworkCard } from '../../components';
+import axiosClient from '../../config/axiosClient';
 
 export const HomeworksPage = ({homeworks, setHomeworks, homework, setHomework}:any ) => {
     
@@ -6,6 +8,25 @@ export const HomeworksPage = ({homeworks, setHomeworks, homework, setHomework}:a
         setHomework({});
     }
 
+    useEffect(() => {
+        const getHomeworks = async() => {
+          const token = localStorage.getItem('token');
+          if(!token) return;
+    
+          const config = {
+              headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${token}`
+              }
+          };
+    
+          const { data } = await axiosClient('/homeworks', config);
+          await setHomeworks(data);
+        }
+        
+        getHomeworks();
+    }, [])
+      
     return (
         <div className='flex-1'>
             <div className='flex '>
@@ -22,9 +43,12 @@ export const HomeworksPage = ({homeworks, setHomeworks, homework, setHomework}:a
                     </div>
                     <div className="mb-4 border-b border-b-slate-300"></div>
                     <div className='h-5/6 overflow-y-auto scrollbar-hide'>
-                        { homeworks.map( (homework:any) => (
-                            <HomeworkCard key={ homework.id } homework={ homework } setHomework={ setHomework }/>
-                        ))}
+                        {
+                            homeworks.length ? homeworks.map( (homework:any) => (
+                                // console.log(homework)
+                                <HomeworkCard key={ homework._id } homework={ homework } setHomework={ setHomework }/>
+                            )) : <p> No Hay Deberes registrados</p>
+                        }
                     </div>
                 </div>
                 <FormHomeworks homeworks={ homeworks } setHomeworks={ setHomeworks } homework={ homework } setHomework={ setHomework }/>

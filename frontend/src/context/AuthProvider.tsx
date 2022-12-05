@@ -6,7 +6,7 @@ const AuthContext= createContext();
 const AuthProvider = ({ children }:any) => {
     
     const [auth, setAuth] = useState({});
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true);
     
     useEffect(() => {
       const authenticateUser = async() => {

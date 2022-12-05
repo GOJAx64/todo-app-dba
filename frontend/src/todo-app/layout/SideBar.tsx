@@ -3,8 +3,12 @@ import todo from '../../assets/todo.svg';
 import note from '../../assets/note.svg';
 import calendar from '../../assets/calendar.svg';
 import logo from '../../assets/logo-1.svg';
+import useAuth from '../../hooks/useAuth';
 
 export const SideBar = () => {
+  
+  const { auth }:any = useAuth();
+  
   return (
     <aside className="w-64 h-screen flex-none bg-slate-200 lg:visible" aria-label="Sidebar">
       <div className="py-4 px-3 ">
@@ -12,7 +16,7 @@ export const SideBar = () => {
             <li>
               <NavLink to="/" className="bg-slate-800 flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-slate-700">
                   <img src={logo} className="h-8 mr-2" alt="logo" />
-                  <span className="ml-3 font-bold text-lg text-slate-100">GOJAx64</span>
+                  <span className="ml-3 font-bold text-lg text-slate-100">{ auth.username }</span>
               </NavLink>
             </li>
              

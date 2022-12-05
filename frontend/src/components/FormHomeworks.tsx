@@ -5,11 +5,12 @@ import es from 'date-fns/locale/es';
 
 import { useForm } from '../hooks';
 import { HeaderHomework } from "./";
+import axiosClient from "../config/axiosClient";
 
 registerLocale('es', es) 
 
 const initialForm = {
-    due: undefined,
+    dueDate: undefined,
     title: '',
     description: '',
     favorite: false,
@@ -18,12 +19,12 @@ const initialForm = {
 
 export const FormHomeworks = ({ homeworks, setHomeworks, homework, setHomework }:any ) => {
     
-    const {setFormValues, formValues, onSubmit, onInputChange, onDateChange }:any = useForm(initialForm, setHomeworks, homeworks);
+    const {setFormValues, formValues, onInputChange, onDateChange }:any = useForm(initialForm, setHomeworks, homeworks);
 
     useEffect(() => {
       if( Object.keys(homework).length > 0 ) {
         setFormValues({
-            due: homework.due,
+            dueDate: new Date(),//homework.dueDate,
             title: homework.title,
             description: homework.description,
             favorite: homework.favorite,
@@ -33,7 +34,43 @@ export const FormHomeworks = ({ homeworks, setHomeworks, homework, setHomework }
         setFormValues(initialForm);
       }
     }, [homework])
+
+    const createId = () => {
+        const random = Math.random().toString(36).substr(2);
+        const date = Date.now().toString(36);
+        return random + date;
+    };
     
+    const handleSubmit = async(e:React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        
+        if( formValues.id ) { //edit
+            const updatedItems = homeworks.map( ( itemState:any ) => itemState.id === formValues.id ? formValues : itemState )
+            setHomeworks(updatedItems);
+        } 
+        else { //add
+            formValues.id = createId();
+            setHomeworks([...homeworks, formValues]);
+
+            try {
+                const token = localStorage.getItem('token');
+                if(!token) return;
+    
+                const config = {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`
+                    }
+                };
+
+                const { data } = await axiosClient.post('/homeworks', formValues, config);
+                console.log(data);
+                setFormValues( initialForm );
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    }
 
     return (
         <div className='w-1/2 h-screen bg-slate-200'>
@@ -42,13 +79,13 @@ export const FormHomeworks = ({ homeworks, setHomeworks, homework, setHomework }
                    (Object.keys(homework).length > 0 ? <HeaderHomework homework={ homework }/> : <h2 className="text-4xl font-bold mb-9">Agregar Nueva Tarea</h2>)
                 }
                 <div className="mb-5 border-b border-b-gray-300"></div>
-                <form onSubmit={ onSubmit } className='border border-slate-300 bg-slate-100 p-3 rounded-md'>
-                    <label htmlFor='due'className='ml-1 text-sm text-slate-700'>Fecha de vencimiento</label>
+                <form onSubmit={ handleSubmit } className='border border-slate-300 bg-slate-100 p-3 rounded-md'>
+                    <label htmlFor='dueDate'className='ml-1 text-sm text-slate-700'>Fecha de vencimiento</label>
                     <DatePicker 
-                        id='due' 
-                        name='due' 
-                        selected={ formValues.due }
-                        onChange={ (event:any) => onDateChange(event, 'due') } 
+                        id='dueDate' 
+                        name='dueDate' 
+                        selected={ formValues.dueDate }
+                        onChange={ (event:any) => onDateChange(event, 'dueDate') } 
                         dateFormat='Pp'
                         showTimeSelect
                         locale='es'

@@ -6,7 +6,7 @@ import { TodoApp } from '../todo-app';
 
 export const AppRouter = () => {
     
-    const { auth, loading }:any = useAuth();
+    const { auth }:any = useAuth();
 
     return (
         <Routes>
